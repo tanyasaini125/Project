@@ -11,12 +11,10 @@ resource "aws_instance" "web" {
 
   user_data = <<-EOF
   #!/bin/bash
-  yum update -y
-  yum install -y httpd aws-cli
+  yum install  httpd aws-cli -y
   systemctl start httpd
   systemctl enable httpd
   aws s3 sync s3://dishant-connected-bucket /var/www/html
-  (crontab -l 2>/dev/null; echo "* * * * * aws s3 sync s3://dishant-connected-bucket /var/www/html") | crontab -
 EOF
 
 
