@@ -80,7 +80,7 @@ resource "aws_vpc_security_group_ingress_rule" "inbound-rules" {
 
 ## Allow http
 resource "aws_vpc_security_group_ingress_rule" "allow http" {
-  security_group_ip = aws_security_group.Firewall.id
+  security_group_id = aws_security_group.Firewall.id
   cidr_ipv4         = "0.0.0.0/0"
   from_port         = 80
   ip_protocol       = "tcp"
