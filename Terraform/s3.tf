@@ -26,15 +26,7 @@ resource "aws_s3_bucket_ownership_controls" "ownership" {
   }
 }
 
-##Now apply ACL
-resource "aws_s3_bucket_acl" "my_acl" {
-  bucket = aws_s3_bucket.my_bucket.id
-  acl    = "public-read" # ya "private"
-  depends_on = [
-  aws_s3_bucket_public_access_block.allow_public_access,
-  aws_s3_bucket_ownership_controls.ownership
-  ]
-}
+
 ## IAM role for ec2
 
 resource "aws_iam_role" "s3_role" {
