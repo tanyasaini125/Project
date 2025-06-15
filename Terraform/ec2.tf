@@ -17,9 +17,6 @@ resource "aws_instance" "web" {
   aws s3 sync s3://dishant-connected-bucket /var/www/html
 EOF
 
-
-
-
   tags = {
     Name = "ec2"
   }
@@ -38,7 +35,7 @@ data "aws_ami" "rhel10" {
 
   filter {
     name   = "name"
-    values = ["RHEL-10*"]
+    values = ["RHEL-9*"]
   }
 
   filter {
