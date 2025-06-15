@@ -11,7 +11,7 @@ resource "aws_instance" "web" {
 
   user_data = <<-EOF
   #!/bin/bash
-  yum install  httpd aws-cli -y
+  yum install  httpd awscli -y
   systemctl start httpd
   systemctl enable httpd
   aws s3 sync s3://dishant-connected-bucket /var/www/html
