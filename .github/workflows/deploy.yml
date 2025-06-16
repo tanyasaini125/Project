@@ -23,6 +23,9 @@ jobs:
       run: terraform init
       working-directory: ./Terraform
 
+    - name: Upload Website to S3
+      run: aws s3 sync ./Website s3://dishant-connected-bucket --delete
+
     - name: Terraform Validate
       run: terraform validate
       working-directory: ./Terraform
@@ -50,7 +53,5 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
 
-    - name: Upload Website to S3
-      run: aws s3 sync ./Website s3://dishant-connected-bucket --delete
 
     
