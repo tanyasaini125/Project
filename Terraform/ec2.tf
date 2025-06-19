@@ -2,7 +2,7 @@
 resource "aws_instance" "web" {
   ami                         = data.aws_ami.rhel10.id
   instance_type               = "t3.micro"
-  availability_zone           = "us-east-1a"
+  availability_zone           = "ap-south-1a"
   key_name                    = "dishu-key"
   subnet_id                   = aws_subnet.public-subnet.id
   associate_public_ip_address = true
@@ -14,7 +14,7 @@ resource "aws_instance" "web" {
   yum install  httpd awscli -y
   systemctl start httpd
   systemctl enable httpd
-  aws s3 sync s3://dishant-connected-bucket /var/www/html
+  aws s3 sync s3://tanya-connected-bucket /var/www/html
 EOF
 
   tags = {
